@@ -13,8 +13,13 @@
   <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+
+  <script src="plugins/angularjs/angular.min.js"></script>
+  <script src="plugins/angularjs/angular-route.min.js"></script>
+  <script src="plugins/angularjs/angular-resource.min.js"></script>
+
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page"  ng-app="tk" ng-controller="tkController as tk11" data-ng-init="init()">
 <div class="login-box">
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
@@ -24,9 +29,9 @@
     <div class="card-body">
       <p class="login-box-msg">Accede para empezar a usar la aplicación</p>
 
-      <form action="../../index3.html" method="post">
+      <form role="form">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="zona">
+          <input type="text"  ng-model="access.user_" id="user_" name="user_" class="form-control" placeholder="zona">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-portrait"></span>
@@ -34,7 +39,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password"  ng-model="access.pass_" id="user_" name="pass_"  class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -47,7 +52,7 @@
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" id="button2" name="button2" ng-click="guardar1()" class="btn btn-primary">Sign In</button>
           </div>
           <!-- /.col -->
         </div>
@@ -72,5 +77,42 @@
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
+<!-- bootbox App -->
+  <script src="node_modules/bootbox/dist/bootbox.min.js"></script>
+  <script src="node_modules/bootbox/dist/bootbox.locales.min.js"></script>
+
+  <script type="text/javascript">
+
+    angular.module("tk", [])
+      .controller("tkController", ["$scope", "$http", function($scope, $http) {
+
+        $scope.guardar1 = function() {
+
+          $http.post("./datausr.php", angular.toJson($scope.access))
+            .then(function(respuesta) {
+
+              $datos = respuesta.data;
+
+              if ($datos[0]['cvezone'] >0)
+              {
+
+              }
+              else
+              {
+
+              }
+
+            });
+
+        };
+
+
+      }]);
+
+
+
+  </script>
+
+
 </body>
 </html>
