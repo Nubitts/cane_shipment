@@ -14,7 +14,8 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
 </head>
-<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed" ng-app="hr" ng-controller="hrController as hr1" data-ng-init="init()" >
+
 <div class="wrapper">
 
   <!-- Preloader -->
@@ -53,11 +54,8 @@
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="#" class="img-circle elevation-2" alt="User Image">
-        </div>
         <div class="info">
-          <a href="#" class="d-block">Usuario Zona</a>
+          <a href="#" class="d-block">Zona {{hr1.zone}} {{hr1.user}}</a>
         </div>
       </div>
 
@@ -84,7 +82,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="./pages/forms/general.html" class="nav-link">
+            <a ng-click="load1()" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Asignación
@@ -273,5 +271,16 @@
 <script src="dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard2.js"></script>
+
+  <script src="plugins/angularjs/angular.min.js"></script>
+  <script src="plugins/angularjs/angular-route.min.js"></script>
+  <script src="plugins/angularjs/angular-resource.min.js"></script>
+
+  <script src="node_modules/bootbox/dist/bootbox.min.js"></script>
+  <script src="node_modules/bootbox/dist/bootbox.locales.min.js"></script>
+
+   <script src="js/obt_us.js"></script>
+
+
 </body>
 </html>

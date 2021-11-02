@@ -60,10 +60,10 @@
 
       <!-- /.social-auth-links -->
 
-      <p class="mb-1">
+<!--       <p class="mb-1">
         <a href="#">Olvidé mi password</a>
       </p>
-
+ -->
     </div>
     <!-- /.card-body -->
   </div>
@@ -80,39 +80,7 @@
 <!-- bootbox App -->
   <script src="node_modules/bootbox/dist/bootbox.min.js"></script>
   <script src="node_modules/bootbox/dist/bootbox.locales.min.js"></script>
-
-  <script type="text/javascript">
-
-    angular.module("tk", [])
-      .controller("tkController", ["$scope", "$http", function($scope, $http) {
-
-        $scope.guardar1 = function() {
-
-          $http.post("./datausr.php", angular.toJson($scope.access))
-            .then(function(respuesta) {
-
-              $datos = respuesta.data;
-
-              if ($datos[0]['cvezone'] >0)
-              {
-
-              }
-              else
-              {
-
-              }
-
-            });
-
-        };
-
-
-      }]);
-
-
-
-  </script>
-
+ <script src="js/eval_us.js"></script>
 
 </body>
 </html>
