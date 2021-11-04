@@ -170,7 +170,7 @@
                           <input type="radio" name="options" id="option_b2" autocomplete="off"  ng-model="gn1.type" value="supplier"  ng-click="options1('supplier')"> Proveedor
                         </label>
                         <label class="btn bg-red">
-                          <input type="radio" name="options" id="option_b3" autocomplete="off"  ng-model="gn1.type" value="ticket"  ng-click="options1('ticket')"> Ticket
+                          <input type="radio" name="options" id="option_b3" autocomplete="off"  ng-model="gn1.type" value="tickett"  ng-click="options1('tickett')"> Ticket
                         </label>
                       </div>
 
@@ -179,15 +179,8 @@
                       <div class="col-md-12">
                           <div class="form-group">
                             <label>Concepto</label>
-                            <select class="select2bs4" multiple="multiple" data-placeholder="Anote valor de busqueda"
-                                    style="width: 100%;" ng-model="gn1.sele1" ng-options="x for x in gn1.list1" >
-<!--                               <option>Alabama</option>
-                              <option>Alaska</option>
-                              <option>California</option>
-                              <option>Delaware</option>
-                              <option>Tennessee</option>
-                              <option>Texas</option>
-                              <option>Washington</option> -->
+                            <select name="sele1" id="sele1" class="select2bs4" multiple="multiple" data-placeholder="Anote valor de busqueda"
+                                    style="width: 100%;" ng-model="gn1.sele1" ng-options="x for x in gn1.list1" ng-change="evaloption(1)">
                             </select>
                           </div>
                       </div>
@@ -195,26 +188,16 @@
                   <div class="row">
                     <div class="col-sm-6">
                       <!-- Select multiple-->
-                      <div class="form-group">
+                      <div id="list1" class="form-group">
                         <label>Elije Orden</label>
-                        <select multiple class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
+                        <select name="sele2" id="sele2" multiple class="form-control" ng-model="gn1.sele2" ng-options="x for x in gn1.listo"  ng-change="evaloption(2)">
                         </select>
                       </div>
                     </div>
                     <div class="col-sm-4">
-                      <div class="form-group">
+                      <div id="list2" class="form-group">
                         <label>Elije Ticket</label>
-                        <select multiple class="form-control">
-                          <option>option 1</option>
-                          <option>option 2</option>
-                          <option>option 3</option>
-                          <option>option 4</option>
-                          <option>option 5</option>
+                        <select name="sele6" id="sele6" multiple class="form-control" ng-model="gn1.sele6" ng-options="x for x in gn1.listt" >
                         </select>
                       </div>
                     </div>
@@ -223,15 +206,8 @@
                       <div class="col-md-12">
                           <div class="form-group">
                             <label>Fletero</label>
-                            <select class="select2bs4" multiple="multiple" data-placeholder="Busca al Fletero"
-                                    style="width: 100%;">
-                              <option>Alabama</option>
-                              <option>Alaska</option>
-                              <option>California</option>
-                              <option>Delaware</option>
-                              <option>Tennessee</option>
-                              <option>Texas</option>
-                              <option>Washington</option>
+                            <select name="sele3" id="sele3" class="select2bs4" multiple="multiple" data-placeholder="Busca al Fletero"
+                                    style="width: 100%;" ng-model="gn1.sele3" ng-options="x for x in gn1.listfle" >
                             </select>
                           </div>
                       </div>
@@ -241,15 +217,8 @@
                     <div class="col-sm-6">
                          <div class="form-group">
                             <label>Alzadora</label>
-                            <select class="select2bs4" multiple="multiple" data-placeholder="Busca Alzadora"
-                                    style="width: 100%;">
-                              <option>Alabama</option>
-                              <option>Alaska</option>
-                              <option>California</option>
-                              <option>Delaware</option>
-                              <option>Tennessee</option>
-                              <option>Texas</option>
-                              <option>Washington</option>
+                            <select name="sele4" id="sele4" class="select2bs4" multiple="multiple" data-placeholder="Busca Alzadora"
+                                    style="width: 100%;" ng-model="gn1.sele4" ng-options="x for x in gn1.lista" >
                             </select>
                           </div>
                     </div>
@@ -257,15 +226,8 @@
 
                          <div class="form-group">
                             <label>Cosechadora</label>
-                            <select class="select2bs4" multiple="multiple" data-placeholder="Busca Cosechadora"
-                                    style="width: 100%;">
-                              <option>Alabama</option>
-                              <option>Alaska</option>
-                              <option>California</option>
-                              <option>Delaware</option>
-                              <option>Tennessee</option>
-                              <option>Texas</option>
-                              <option>Washington</option>
+                            <select name="sele5" id="sele5" class="select2bs4" multiple="multiple" data-placeholder="Busca Cosechadora"
+                                    style="width: 100%;" ng-model="gn1.sele5" ng-options="x for x in gn1.listc" >
                             </select>
                           </div>
 
@@ -379,6 +341,9 @@
 
           var sId = valores.substr(4,80);
 
+          $('#list1').hide();
+          $('#list2').hide();
+
           $scope.gn1.hash_ = sId;
 
           $http.post("../../datusr.php", angular.toJson($scope.gn1))
@@ -392,6 +357,12 @@
                 $scope.gn1.zone = $datos[0]['cvezone'];
                 $scope.gn1.user = $datos[0]['description'];
 
+
+                $scope.options1("id_supplier");
+                $scope.complement("fl");
+                $scope.complement("al");
+                $scope.complement("co");
+
               }
               else
               {
@@ -401,41 +372,212 @@
 
             });
 
+        };
+
+        $scope.load1 = function() {
+
+            const valores = window.location.search;
+
+            var sId = valores.substr(4,80);
+
+            $scope.gn1.hash_ = sId;
+
+            window.location.href = "../../index2.html?id=" + $scope.gn1.hash_;
 
         };
 
-         $scope.load1 = function() {
-
-          const valores = window.location.search;
-
-          var sId = valores.substr(4,80);
-
-          $scope.gn1.hash_ = sId;
-
-          window.location.href = "../../index2.html?id=" + $scope.gn1.hash_;
-
-         };
-
-          $scope.options1 = function(opciones) {
+        $scope.options1 = function(opciones) {
 
             var zona = $scope.gn1.zone;
 
             $scope.gn1.type = opciones;
+            $scope.gn1.order = 0;
+            $scope.gn1.code = 0;
+            $scope.gn1.supplier = "0";
 
             $http.post("../../options1.php", angular.toJson($scope.gn1))
               .then(function(respuesta) {
 
-                $datos = respuesta.data;
+                $Receive = respuesta.data;
 
-                $scope.gn1.list1 = $datos;
+                arrlista = [];
+
+                for (let i = 0; i < this.$Receive.length; i++) {
+                    arrlista.push($Receive[i]["data_val"]);
+                }
+
+                $scope.gn1.list1 = arrlista;
 
             });
 
-          };
+        };
 
+        $scope.evaloption = function(opcion) {
+
+          if ($scope.gn1.sele1[0] == undefined) {
+
+            $('#list1').hide();
+            $('#list2').hide();
+
+            $scope.gn1.sele2 = [];
+            $scope.gn1.sele6 = [];
+/*             $('#sele2').empty();
+            $('#sele6').empty(); */
+
+          }
+          else
+          {
+
+            if($scope.gn1.sele1[0].length >0){
+
+              switch(opcion) {
+                case 1:
+
+                    if($scope.gn1.type != "tickett"){
+                      $('#list1').show();
+                    }
+
+                    if (is_numeric( $scope.gn1.sele1[0])==true) {
+                      $scope.gn1.type = "order";
+                      $scope.gn1.code = $scope.gn1.sele1[0];
+                      $scope.gn1.supplier = "0";
+                    }
+                    else
+                    {
+                      $scope.gn1.type = "ordert";
+                      $scope.gn1.code = 0;
+                      $scope.gn1.supplier = $scope.gn1.sele1[0];
+                    }
+                    $scope.gn1.order = 0;
+                    break;
+
+                case 2:
+
+                    $('#list2').show();
+
+                    if (is_numeric( $scope.gn1.sele1[0])==true) {
+                      $scope.gn1.code =  $scope.gn1.sele1[0];
+                      $scope.gn1.supplier ="";
+                    }
+                    else
+                    {
+                      $scope.gn1.code =  0;
+                      $scope.gn1.supplier = $scope.gn1.sele1[0];
+                    }
+
+                    $scope.gn1.order = $scope.gn1.sele2[0];
+
+                    $scope.gn1.type = "ticket";
+
+                    break;
+
+              }
+
+              $http.post("../../options1.php", angular.toJson($scope.gn1))
+                  .then(function(respuesta) {
+
+                    $Receivelo = respuesta.data;
+
+                    arrlis1 = [];
+
+                    for (let i = 0; i < this.$Receivelo.length; i++) {
+                        arrlis1.push($Receivelo[i]["data_val"]);
+                    }
+
+/*                     switch($scope.gn1.type)
+                    {
+                          case "order":
+
+                             var cuantos = $('#sele2').length;
+
+                            if( cuantos == 1)
+                            {
+
+                              for (let i = 0; i < this.$Receivelo.length; i++) {
+                                  $('#sele2').append('<option value="' +  $Receivelo[i]["data_val"] + '">' + $Receivelo[i]["data_val"] +' </option>');
+                              }
+
+                            }
+
+                            break;
+
+                          case "ordert":
+
+                             var cuantos = $('#sele2').length;
+
+                            if( cuantos == 1)
+                            {
+
+                              for (let i = 0; i < this.$Receivelo.length; i++) {
+                                  $('#sele2').append('<option value="' +  $Receivelo[i]["data_val"] + '">' + $Receivelo[i]["data_val"] +' </option>');
+                              }
+
+                            }
+
+                            break;
+
+
+                    }
+ */
+                    switch(opcion){
+                      case 1:
+                        $scope.gn1.listo = arrlis1;
+                        break;
+                      case 2:
+                        $scope.gn1.listt = arrlis1;
+                        break;
+                    }
+
+                    delete $Receivelo
+
+              });
+
+            }
+
+          }
+
+        };
+
+        $scope.complement = function(opcion) {
+
+            $scope.gn1.typef = opcion;
+
+            $http.post("../../datflet.php", angular.toJson($scope.gn1))
+              .then(function(respuesta) {
+
+                $Receive = respuesta.data;
+
+                arrcomple = [];
+
+                for (let i = 0; i < this.$Receive.length; i++) {
+                    arrcomple.push($Receive[i]["data_val"]);
+                }
+
+                switch(opcion) {
+                  case "fl":
+                    $scope.gn1.listfle = arrcomple;
+                    break;
+                  case "al":
+                    $scope.gn1.lista = arrcomple;
+                    break;
+                  case "co":
+                    $scope.gn1.listc = arrcomple;
+                    break;
+
+                }
+
+
+
+            });
+
+        };
 
 
       }]);
+
+function is_numeric(value) {
+	return !isNaN(parseFloat(value)) && isFinite(value);
+}
 
 $(function () {
 
