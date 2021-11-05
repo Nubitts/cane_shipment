@@ -10,7 +10,7 @@ use Doctrine\DBAL\DriverManager;
 
 $db = $con;
 
-$type = $header1->type;
+$typeb = $header1->typeb;
 $zone = $header1->zone;
 $order = $header1->order;
 $code = $header1->code;
@@ -18,7 +18,7 @@ $supplier = $header1->supplier;
 
 $Query = "";
 
-switch ($type) {
+switch ($typeb) {
   case "id_supplier":
     $Query = "select code_ as data_val from canes_tick where zone = " . $zone . "  and ISNULL(idfleter) = true group by code_, supplier order by code_";
     break;

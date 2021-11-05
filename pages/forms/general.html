@@ -164,10 +164,10 @@
                       <p class="mt-3 mb-1">Defina tipo de busqueda <code>....</code></p>
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn bg-red active">
-                          <input type="radio" name="options" id="option_b1" autocomplete="off" checked ng-model="gn1.type" value="id_supplier" ng-click="options1('id_supplier')" > Clave Proveedor
+                          <input type="radio" name="options" id="option_b1" autocomplete="off" ng-model="gn1.type" value="id_supplier" ng-click="options1('id_supplier')" > ID Productor
                         </label>
                         <label class="btn bg-red">
-                          <input type="radio" name="options" id="option_b2" autocomplete="off"  ng-model="gn1.type" value="supplier"  ng-click="options1('supplier')"> Proveedor
+                          <input type="radio" name="options" id="option_b2" autocomplete="off"  ng-model="gn1.type" value="supplier"  ng-click="options1('supplier')"> Productor
                         </label>
                         <label class="btn bg-red">
                           <input type="radio" name="options" id="option_b3" autocomplete="off"  ng-model="gn1.type" value="tickett"  ng-click="options1('tickett')"> Ticket
@@ -240,10 +240,10 @@
                       <p class="mt-3 mb-1">Se envia <code>....</code></p>
                       <div class="btn-group btn-group-toggle" data-toggle="buttons">
                         <label class="btn bg-warning active">
-                          <input type="radio" name="options" id="option_b1" autocomplete="off" checked> Hoy
+                          <input type="radio" name="options" id="option_b1" autocomplete="off" ng-model="gn1.envy" value="today"> Hoy
                         </label>
                         <label class="btn bg-warning">
-                          <input type="radio" name="options" id="option_b2" autocomplete="off"> Mañana
+                          <input type="radio" name="options" id="option_b2" autocomplete="off" ng-model="gn1.envy" value="tomorrow"> Mañana
                         </label>
                       </div>
 
@@ -251,8 +251,7 @@
 
 
               <div class="card-footer clearfix">
-                <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Asignando</a>
-                <a href="javascript:void(0)" class="btn btn-sm btn-danger float-right">Cancelar</a>
+                <a href="#" ng-click="save()" class="btn btn-sm btn-info float-left">Asignando</a>
               </div>
 
                 </form>
@@ -390,7 +389,7 @@
 
             var zona = $scope.gn1.zone;
 
-            $scope.gn1.type = opciones;
+            $scope.gn1.typeb = opciones;
             $scope.gn1.order = 0;
             $scope.gn1.code = 0;
             $scope.gn1.supplier = "0";
@@ -421,8 +420,6 @@
 
             $scope.gn1.sele2 = [];
             $scope.gn1.sele6 = [];
-/*             $('#sele2').empty();
-            $('#sele6').empty(); */
 
           }
           else
@@ -438,13 +435,13 @@
                     }
 
                     if (is_numeric( $scope.gn1.sele1[0])==true) {
-                      $scope.gn1.type = "order";
+                      $scope.gn1.typeb = "order";
                       $scope.gn1.code = $scope.gn1.sele1[0];
                       $scope.gn1.supplier = "0";
                     }
                     else
                     {
-                      $scope.gn1.type = "ordert";
+                      $scope.gn1.typeb = "ordert";
                       $scope.gn1.code = 0;
                       $scope.gn1.supplier = $scope.gn1.sele1[0];
                     }
@@ -467,7 +464,7 @@
 
                     $scope.gn1.order = $scope.gn1.sele2[0];
 
-                    $scope.gn1.type = "ticket";
+                    $scope.gn1.typeb = "ticket";
 
                     break;
 
@@ -484,41 +481,6 @@
                         arrlis1.push($Receivelo[i]["data_val"]);
                     }
 
-/*                     switch($scope.gn1.type)
-                    {
-                          case "order":
-
-                             var cuantos = $('#sele2').length;
-
-                            if( cuantos == 1)
-                            {
-
-                              for (let i = 0; i < this.$Receivelo.length; i++) {
-                                  $('#sele2').append('<option value="' +  $Receivelo[i]["data_val"] + '">' + $Receivelo[i]["data_val"] +' </option>');
-                              }
-
-                            }
-
-                            break;
-
-                          case "ordert":
-
-                             var cuantos = $('#sele2').length;
-
-                            if( cuantos == 1)
-                            {
-
-                              for (let i = 0; i < this.$Receivelo.length; i++) {
-                                  $('#sele2').append('<option value="' +  $Receivelo[i]["data_val"] + '">' + $Receivelo[i]["data_val"] +' </option>');
-                              }
-
-                            }
-
-                            break;
-
-
-                    }
- */
                     switch(opcion){
                       case 1:
                         $scope.gn1.listo = arrlis1;
@@ -572,6 +534,99 @@
 
         };
 
+        $scope.save = function() {
+
+            bootbox.confirm("Confirma asignar el ticket!", function(result){
+
+                if (result == true){
+
+                    var baneje =0;
+
+                    if (typeof($scope.gn1.type) == "undefined"){baneje = 1; }
+
+                    if (typeof($scope.gn1.sele1) == "undefined"){baneje = 1; }
+
+                    if (typeof($scope.gn1.sele3) == "undefined"){baneje = 1; }
+
+                    if (typeof($scope.gn1.envy) == "undefined"){baneje = 1; }
+
+                    if (baneje == 0){
+
+                        $scope.gn1.valtype = $scope.gn1.sele1[0];
+                        if (typeof($scope.gn1.sele2) == "undefined"){
+                          $scope.gn1.order = "0";
+                        }
+                        else
+                        {
+                          $scope.gn1.order = $scope.gn1.sele2[0];
+                        }
+
+                        if (typeof($scope.gn1.sele6) == "undefined"){
+                          $scope.gn1.ticket = "0";
+                        }
+                        else
+                        {
+                          $scope.gn1.ticket = $scope.gn1.sele6[0];
+                        }
+
+
+                        $scope.gn1.forwarder = $scope.gn1.sele3[0];
+                        if (typeof($scope.gn1.sele4) == "undefined"){
+                          $scope.gn1.liftingm = "";
+                        }
+                        else
+                        {
+                          $scope.gn1.liftingm =  $scope.gn1.sele4[0];
+                        }
+                        if  (typeof($scope.gn1.sele5) == "undefined"){
+                          $scope.gn1.harvester = "";
+                        }
+                        else
+                        {
+                          $scope.gn1.harvester =  $scope.gn1.sele5[0];
+                        }
+
+                        $http.post("../../saveupt.php", angular.toJson($scope.gn1))
+                          .then(function(respuesta) {
+
+                            $Resulta = respuesta.data;
+
+                            bootbox.alert("El ticket " + $Resulta[0]["ticket"] + " fue asignado a " + $Resulta[0]["fullnamefleter"] + "!", function(){
+
+                                const valores = window.location.search;
+
+                                var sId = valores.substr(4,80);
+
+                                $scope.gn1.hash_ = sId;
+
+                                window.location.href = "../../index2.html?id=" + $scope.gn1.hash_;
+
+                            });
+
+
+
+
+
+                        });
+
+                    }
+
+                    if (baneje == 1){
+
+                        bootbox.alert({
+                            message: "No es posible asignar ticket, algun campo vacio o defina una opcion de la barra principal!",
+                            size: 'small'
+                        });
+
+                    }
+
+                }
+
+
+
+            });
+
+        };
 
       }]);
 
