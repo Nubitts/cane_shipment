@@ -10,14 +10,15 @@ angular.module("tk", [])
 
               $datos = respuesta.data;
 
-              if ($datos[0]['cvezone'] >0)
+              var scve = $datos[0]['cve'];
+
+              if (scve != " ")   
               {
                 window.location.href = "index2.html?id="+$datos[0]['hash_'] ;
               }
               else
               {
                 bootbox.alert("usuario invalido o password incorrecto...!");
-
               }
 
             });

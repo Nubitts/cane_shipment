@@ -13,7 +13,7 @@ $db = $con;
 $zone = $header1->zone;
 $type = $header1->typef;
 
-$Query = "select fullname as data_val from forwarders where idzone = "  . $zone . " and type = '" . $type . "' and idzaf in (select idzaf from zafraparams where actual =1) ";
+$Query = "select concat(cveforw,' ', fullname) as data_val from forwarders where type = '" . $type . "' and idzaf in (select idzaf from zafraparams where actual =1) ";
 
 $statement = $db->prepare($Query);
 $resultSet = $statement->execute();

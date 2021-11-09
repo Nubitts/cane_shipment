@@ -16,25 +16,32 @@
 
               $datos = respuesta.data;
 
-              if ($datos[0]['cvezone'] >0)
+              if ($datos[0]['cve'] != " ")
               {
 
-                $scope.hr1.zone = $datos[0]['cvezone'];
-                $scope.hr1.user = $datos[0]['description'];
+                $scope.hr1.zone = $datos[0]['cve'];
+                $scope.hr1.user = $datos[0]['user_'];
+                $scope.hr1.typeu = $datos[0]['tu'];
+                $scope.hr1.id = $datos[0]['id'];
+
+                $http.post("./table.php", angular.toJson($scope.hr1))
+                  .then(function(respuesta) {
+
+                    $scope.hr1.datas = respuesta.data;
+
+                  });
 
               }
               else
               {
                 bootbox.alert("usuario invalido o password incorrecto...!");
-
               }
 
             });
 
-
         };
 
-         $scope.load1 = function() {
+        $scope.load1 = function() {
 
           const valores = window.location.search;
 
@@ -44,7 +51,13 @@
 
           window.location.href = "./pages/forms/general.html?id=" + $scope.hr1.hash_;
 
-         };
+        };
+
+        $scope.load2 = function() {
+
+          window.location.href = "index.html";
+
+        };
 
 
       }]);

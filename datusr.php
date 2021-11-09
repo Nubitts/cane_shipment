@@ -12,7 +12,7 @@ $db = $con;
 
 $hash_ = $header1->hash_;
 
-$Query = "select cvezone, description, hash_ from zones where hash_ = '"  . $hash_ . "' and activate = 1";
+$Query = "select cve, user_, hash_, tu, id from vUsersapptc where hash_ = '" . $hash_ . "'";
 
 $statement = $db->prepare($Query);
 $resultSet = $statement->execute();

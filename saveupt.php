@@ -11,8 +11,7 @@ use Doctrine\DBAL\DriverManager;
 $db = $con;
 
 $type = $header1->type;
-$zone = $header1->zone;
-$valtype = $header1->valtype;
+$zone = $header1->id;
 $order = $header1->order;
 $ticket = $header1->ticket;
 $forwarder = $header1->forwarder;
@@ -23,14 +22,6 @@ $envy = $header1->envy;
 $Query = "";
 $filter = "";
 $valtick = 0;
-
-if ($type == "tickett") {
-  $filter = "ticket =" . $valtype;
-  $valtick = $valtype;
-} else {
-  $filter = "ticket =" . $ticket;
-  $valtick = $ticket;
-}
 
 $send = "";
 
@@ -43,18 +34,18 @@ switch ($envy) {
     break;
 }
 
-$count = $db->executeStatement("select ticket from canes_tick where zone = ? and ticket = ? and ISNULL(fullnamefleter) = false and grossweight = 0", array($zone, $valtick));
+$count = $db->executeStatement("select ticket from canes_tick where zone = ? and ticket = ? and ISNULL(fullnamefleter) = false and grossweight = 0 and zafra = 2022", array($zone, $valtick));
 
 if ($count == 0) {
 
-  $Query = "UPDATE canes_tick SET idfleter = (select cveforw from forwarders where type = 'fl' and  fullname = ?),
-  idlifting = (select cveforw from forwarders where type = 'al' and  fullname = ?),
-  idfleter_ = (select cveforw from forwarders where type = 'co' and  fullname = ?), fullnamefleter = ?, fullnamelifting = ?, fullnamefleter_ = ?, zone = ?,
-  arrivaldate = " . $send . " WHERE ticket = ? and zafra = 2021";
+  $Query = "UPDATE canes_tick SET idfleter = ?, idlifting = ?, idfleter_ = ?,
+  fullnamefleter = (select fullname from forwarders where type = 'fl' and  cveforw = ?),
+  fullnamelifting = (select fullname from forwarders where type = 'al' and  cveforw = ?), fullnamefleter_ = (select fullname from forwarders where type = 'co' and  cveforw = ?), zone = ?,
+  arrivaldate = " . $send . " WHERE ticket = ? and zafra = 2022";
 
-  $count = $con->executeStatement($Query, array($forwarder, $liftingm, $harverster, $forwarder, $liftingm, $harverster, $zone, $valtick));
+  $count = $con->executeStatement($Query, array($forwarder, $liftingm, $harverster, $forwarder, $liftingm, $harverster, $zone, $ticket));
 
-  $Query = "select " . $valtick . " as ticket, '" . $forwarder . "' as fullnamefleter";
+  $Query = "select ticket, fullnamefleter from canes_tick where ticket = " . $ticket . " and zafra = 2021";
 } else {
   $Query = "select 0 as ticket, 'EL TICKET FUE ASIGNADO ANTERIORMENTE' as fullnamefleter";
 }
