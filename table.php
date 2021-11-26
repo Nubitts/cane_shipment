@@ -10,20 +10,19 @@ use Doctrine\DBAL\DriverManager;
 
 $db = $con;
 
-$zone = substr($header1->zone,4,2);
-$div = substr($header1->zone,3,2);
+$zone = substr($header1->zone, 4, 2);
+$div = substr($header1->zone, 3, 2);
 $typeu = $header1->typeu;
 
 $Query = "";
 
-switch($typeu)
-{
-    case "Z":
-        $Query = "select ticket, fullnamefleter, arrivaldate as status,zone from canes_tick where zone = " . $zone . " and isnull(idfleter) = false and grossweight = 0 and zafra = 2021";
-        break;
-    case "D":
-        $Query = "select ticket, fullnamefleter, arrivaldate as status,zone from canes_tick where zone in (select cvezone from div_zones where cvediv = '" . $div . "') and isnull(idfleter) = false  and zafra = 2021";
-        break;
+switch ($typeu) {
+  case "Z":
+    $Query = "select ticket, fullnamefleter, arrivaldate as fstatus,zona as zone, 'cleaned('+ticket+')' as accion from canes_tempo where zona = " . $zone . " and isnull(fullnamefleter) = false and pesob = 0 and zafrad = zafraday()";
+    break;
+  case "D":
+    $Query = "select ticket, fullnamefleter, arrivaldate as fstatus,zona as zone,  'cleaned('+ticket+')' as accion from canes_tempo where zona in (select cvezone from div_zones where cvediv = '" . $div . "') and isnull(fullnamefleter) = false and pesob = 0 and zafrad = zafraday()";
+    break;
 }
 
 

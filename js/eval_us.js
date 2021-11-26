@@ -12,7 +12,7 @@ angular.module("tk", [])
 
               var scve = $datos[0]['cve'];
 
-              if (scve != " ")   
+              if (scve != "0")
               {
                 window.location.href = "index2.html?id="+$datos[0]['hash_'] ;
               }

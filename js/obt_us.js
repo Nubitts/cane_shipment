@@ -59,6 +59,16 @@
 
         };
 
+        $scope.cleaned = function() {
+
+          alert($("#quita").value);
+
+              bootbox.confirm("Esta seguro de anular la asignacion al ticket " + ticket + "!", function(result){
+                  console.log('This was logged in the callback: ' + result);
+              });
+
+        };
+
 
       }]);
 

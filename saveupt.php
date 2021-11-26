@@ -13,7 +13,7 @@ $db = $con;
 $type = $header1->type;
 $zone = $header1->id;
 $order = $header1->order;
-$ticket = $header1->ticket;
+$ticket = $header1->iticket;
 $forwarder = $header1->forwarder;
 $liftingm = $header1->liftingm;
 $harverster = $header1->harvester;
@@ -34,18 +34,19 @@ switch ($envy) {
     break;
 }
 
-$count = $db->executeStatement("select ticket from canes_tick where zone = ? and ticket = ? and ISNULL(fullnamefleter) = false and grossweight = 0 and zafra = 2022", array($zone, $valtick));
+$count = $db->executeStatement("select ticket from canes_tempo where ticket = ? and fullnamefleter is null and round(pesob,0) < 1 and zafrad = zafraday()", array($ticket));
 
-if ($count == 0) {
+if ($count > 0) {
 
-  $Query = "UPDATE canes_tick SET idfleter = ?, idlifting = ?, idfleter_ = ?,
+  $Query = "UPDATE canes_tempo SET fletero = ?, alzadora = ?, idfleter_ = ?,
   fullnamefleter = (select fullname from forwarders where type = 'fl' and  cveforw = ?),
-  fullnamelifting = (select fullname from forwarders where type = 'al' and  cveforw = ?), fullnamefleter_ = (select fullname from forwarders where type = 'co' and  cveforw = ?), zone = ?,
-  arrivaldate = " . $send . " WHERE ticket = ? and zafra = 2022";
+  fullnamelifting = (select fullname from forwarders where type = 'al' and  cveforw = ?), fullnamefleter_ = (select fullname from forwarders where type = 'co' and  cveforw = ?),
+  arrivaldate = " . $send . " WHERE ticket = ? and zafrad = zafraday()";
 
-  $count = $con->executeStatement($Query, array($forwarder, $liftingm, $harverster, $forwarder, $liftingm, $harverster, $zone, $ticket));
+  $county = $con->executeStatement($Query, array($forwarder, $liftingm, $harverster, $forwarder, $liftingm, $harverster, $ticket));
 
-  $Query = "select ticket, fullnamefleter from canes_tick where ticket = " . $ticket . " and zafra = 2021";
+
+  $Query = "select ticket, fullnamefleter from canes_tempo where ticket = " . $ticket . " and zafrad = zafraday()";
 } else {
   $Query = "select 0 as ticket, 'EL TICKET FUE ASIGNADO ANTERIORMENTE' as fullnamefleter";
 }

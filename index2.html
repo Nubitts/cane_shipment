@@ -184,9 +184,9 @@
                         <td>{{ x.ticket }}</td>
                         <td>{{ x.fullnamefleter }}</td>
                         <td>{{ x.zone }}</td>
-                        <td><span class="badge badge-success">{{ x.status }}</span></td>
+                        <td><span class="badge badge-success">{{ x.fstatus }}</span></td>
                         <td>
-                          <div class="sparkbar" data-color="#00a65a" data-height="20"><a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a></div>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20"><a href="#" id="quita" ng-model="hr1.tickt" value={{x.ticket}} ng-click={{x.accion}} class="btn btn-danger"><i class="fas fa-trash"></i></a></div>
                         </td>
                       </tr>
 <!--                     <tr>

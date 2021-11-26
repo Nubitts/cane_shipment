@@ -25,10 +25,10 @@ switch ($typeb) {
 
     switch ($typeu) {
       case "Z":
-        $Query = "select order_ as data_val from canes_tick where zone = " . $id . " and ISNULL(idfleter) = true group by order_";
+        $Query = "select orden as data_val from canes_tempo where zona = " . $id . " and ISNULL(fullnamefleter) = true group by orden";
         break;
       case "D":
-        $Query = "select order_ as data_val from canes_tick where zone in (select cvezone from div_zones where cvediv = '" . $id . "') and ISNULL(idfleter) = true group by order_";
+        $Query = "select orden as data_val from canes_tempo where zona in (select cvezone from div_zones where cvediv = '" . $id . "') and ISNULL(fullnamefleter) = true group by orden";
         break;
     }
 
@@ -36,20 +36,20 @@ switch ($typeb) {
   case "oticket":
     switch ($typeu) {
       case "Z":
-        $Query = "select ticket as data_val from canes_tick where zone = " . $id . " and order_ = " . $order . " and ISNULL(idfleter) = true";
+        $Query = "select ticket as data_val from canes_tempo where zona = " . $id . " and orden = " . $order . " and ISNULL(fullnamefleter) = true";
         break;
       case "D":
-        $Query = "select ticket as data_val from canes_tick where zone in (select cvezone from div_zones where cvediv = '" . $id . "') and order_ = " . $order . " and ISNULL(idfleter) = true";
+        $Query = "select ticket as data_val from canes_tempo where zona in (select cvezone from div_zones where cvediv = '" . $id . "') and orden = " . $order . " and ISNULL(fullnamefleter) = true";
         break;
     }
     break;
   case "isupplier":
     switch ($typeu) {
       case "Z":
-        $Query = "select concat(code_,' ',supplier) as data_val from canes_tick where zone = " . $id . " and ISNULL(idfleter) = true group by code_,supplier";
+        $Query = "select concat(clave,' ',nombre) as data_val from canes_tempo where zona = " . $id . " and ISNULL(fullnamefleter) = true group by clave,nombre";
         break;
       case "D":
-        $Query = "select concat(code_,' ',supplier) as data_val from canes_tick where zone in (select cvezone from div_zones where cvediv = '" . $id . "') and ISNULL(idfleter) = true group by code_,supplier";
+        $Query = "select concat(clave,' ',nombre) as data_val from canes_tempo where zona in (select cvezone from div_zones where cvediv = '" . $id . "') and ISNULL(fullnamefleter) = true group by clave,nombre";
         break;
     }
     break;
@@ -58,10 +58,10 @@ switch ($typeb) {
 
     switch ($typeu) {
       case "Z":
-        $Query = "select order_ as data_val from canes_tick where zone = " . $id . " and code_ = " . $supplier . " and ISNULL(idfleter) = true group by order_";
+        $Query = "select orden as data_val from canes_tempo where zona = " . $id . " and clave = " . $supplier . " and ISNULL(fullnamefleter) = true group by orden";
         break;
       case "D":
-        $Query = "select order_ as data_val from canes_tick where zone in (select cvezone from div_zones where cvediv = '" . $id . "') and code_ = " . $supplier . " and ISNULL(idfleter) = true group by order_";
+        $Query = "select orden as data_val from canes_tempo where zona in (select cvezone from div_zones where cvediv = '" . $id . "') and clave = " . $supplier . " and ISNULL(fullnamefleter) = true group by orden";
         break;
     }
     break;
@@ -69,10 +69,10 @@ switch ($typeb) {
 
     switch ($typeu) {
       case "Z":
-        $Query = "select ticket as data_val from canes_tick where zone = " . $id . " and ISNULL(idfleter) = true";
+        $Query = "select ticket as data_val from canes_tempo where zona = " . $id . " and ISNULL(fullnamefleter) = true";
         break;
       case "D":
-        $Query = "select ticket as data_val from canes_tick where zone in (select cvezone from div_zones where cvediv = '" . $id . "') and ISNULL(idfleter) = true";
+        $Query = "select ticket as data_val from canes_tempo where zona in (select cvezone from div_zones where cvediv = '" . $id . "') and ISNULL(fullnamefleter) = true";
         break;
     }
 
