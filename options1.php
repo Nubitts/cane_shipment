@@ -72,7 +72,7 @@ switch ($typeb) {
         $Query = "select ticket as data_val from canes_tempo where zona = " . $id . " and ISNULL(fullnamefleter) = true";
         break;
       case "D":
-        $Query = "select ticket as data_val from canes_tempo where zona in (select cvezone from div_zones where cvediv = '" . $id . "') and ISNULL(fullnamefleter) = true";
+        $Query = "select ticket as data_val from canes_tempo where zona in (select cvezone from div_zones where cvediv = '" . $id . "') and ISNULL(fullnamefleter) = true"; 
         break;
     }
 

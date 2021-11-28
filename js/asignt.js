@@ -1,3 +1,7 @@
+/* eslint-disable space-before-function-paren */
+/* eslint-disable prefer-template */
+/* eslint-disable unicorn/prefer-string-slice */
+/* eslint-disable comma-spacing */
 /* eslint-disable quotes */
 /* eslint-disable no-var */
 /* eslint-disable prefer-arrow-callback */
@@ -410,7 +414,19 @@ angular.module('gn', [])
 
         $scope.load2 = function () {
 
-          window.location.href = "index.html";
+          window.location.href = "../../index.html";
+
+        };
+
+        $scope.load3 = function() {
+
+          const valores = window.location.search;
+
+          var sId = valores.substr(4,80);
+
+          $scope.gn1.hash_ = sId;
+
+          window.location.href = "ordquema.html?id=" + $scope.gn1.hash_;
 
         };
 

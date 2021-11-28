@@ -102,7 +102,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="load3()" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Asignación
@@ -111,7 +111,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a ng-click="load3()" class="nav-link">
+            <a ng-click="#" class="nav-link active">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Ordenes de quema
@@ -142,12 +142,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Asignacion</h1>
+            <h1>Ordenes de Quema</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Asignacion</li>
+              <li class="breadcrumb-item active">Ordenes de quema</li>
             </ol>
           </div>
         </div>
@@ -172,114 +172,84 @@
             <!-- general form elements disabled -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Asignando ticket a Fletero</h3>
+                <h3 class="card-title">Concretar Fecha de Quema</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form>
-                  <div class="row">
-                      <p class="mt-3 mb-1">Defina tipo de busqueda <code>....</code></p>
-                      <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn bg-red active">
-                          <input type="radio" name="options" id="option_b1" autocomplete="off" ng-model="gn1.type" value="iorder" selected ng-click="options1('iorder')" > Orden
-                        </label>
-                        <label class="btn bg-red">
-                          <input type="radio" name="options" id="option_b2" autocomplete="off"  ng-model="gn1.type" value="isupplier"  ng-click="options1('isupplier')"> Productor
-                        </label>
-                        <label class="btn bg-red">
-                          <input type="radio" name="options" id="option_b3" autocomplete="off"  ng-model="gn1.type" value="tickett"  ng-click="options1('tickett')"> Ticket
-                        </label>
-                      </div>
-
-                  </div>
-                  <div class="row">
-                      <div class="col-md-12">
-                          <div id="capture" class="form-group">
-                            <label>Busqueda</label>
-                            <select name="sele1" id="sele1" class="select2bs4" multiple="multiple" data-placeholder="Anote valor de busqueda"
-                                    style="width: 100%;" ng-model="gn1.sele1" ng-options="x for x in gn1.list1" ng-change="evaloption(3)">
-                            </select>
-                          </div>
-                      </div>
-                  </div>
+                <form id="formburn">
                   <div class="row">
                     <div class="col-sm-6">
+                      <label>Fecha:</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                        </div>
+                        <input type="text" ng-model="gn1.datinitial" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy/mm/dd" data-mask>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <label>Hora:</label>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                        </div>
+                        <input type="text" ng-model="gn1.horinitial" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="HH:MM" data-mask>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-4">
                       <!-- Select multiple-->
-                      <div id="list1" class="form-group">
-                        <label>Elije Orden</label>
-                        <select name="sele2" id="sele2" multiple class="form-control" ng-model="gn1.sele2" ng-options="x for x in gn1.listo"  ng-change="evaloption(1)">
-                        </select>
+                      <div id="context" class="form-group">
+                        <label>Orden</label>
+                        <input type="text" ng-model="gn1.order" rows="2" class="form-control" id="dato_ticket" name="dato_ticket" placeholder="Anote orden" class="form-control">
                       </div>
                     </div>
                     <div class="col-sm-4">
-                      <div id="list2" class="form-group">
-                        <label>Elije Ticket</label>
-                        <select name="sele6" id="sele6" multiple class="form-control" ng-model="gn1.sele6" ng-options="x for x in gn1.listt" ng-change="loadticket(1)" >
+                      <div id="context" class="form-group">
+                        <label>Desde ticket</label>
+                        <input type="text" ng-model="gn1.tickinitial" rows="2" class="form-control" id="dato_ticket" name="dato_ticket" placeholder="Anote ticket inicial" class="form-control">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div id="context" class="form-group">
+                        <label>Hasta ticket</label>
+                        <input type="text" ng-model="gn1.tickend" rows="2" class="form-control" id="dato_ticket" name="dato_ticket" placeholder="Anote ticket final" class="form-control">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>Tipo de caña</label>
+                        <select class="form-control"  ng-model="gn1.typecanes">
+                          <option>Cruda</option>
+                          <option>Quemada</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <!-- select -->
+                      <div class="form-group">
+                        <label>Tipo de quema</label>
+                        <select class="form-control"  ng-model="gn1.typeburns">
+                          <option>Programada</option>
+                          <option>Accidentada</option>
+                          <option>Normal</option>
                         </select>
                       </div>
                     </div>
                   </div>
 
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div id="context" class="form-group">
-                        <label>Contexto</label>
-                        <input type="text" ng-model="gn1.context" rows="2" class="form-control" id="dato_ticket" name="dato_ticket" placeholder="Datos del ticket" class="form-control">
-                      </div>
-                    </div>
+                  <div class="card-footer clearfix">
+                    <a href="#" ng-click="save()" class="btn btn-sm btn-info float-left">Asignando</a>
+                    <a ng-click="cleanforms()" class="btn btn-sm btn-default float-center">Limpiar</a>
+                    <a ng-click="load2()" class="btn btn-sm btn-danger float-right">Cerrar sesion</a>
                   </div>
-
-                  <div class="row">
-                      <div class="col-md-12">
-                          <div class="form-group">
-                            <label>Fletero</label>
-                            <select name="sele3" id="sele3" class="select2bs4" multiple="multiple" data-placeholder="Busca al Fletero"
-                                    style="width: 100%;" ng-model="gn1.sele3" ng-options="x for x in gn1.listfle" >
-                            </select>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-sm-6">
-                         <div class="form-group">
-                            <label>Alzadora</label>
-                            <select name="sele4" id="sele4" class="select2bs4" multiple="multiple" data-placeholder="Busca Alzadora"
-                                    style="width: 100%;" ng-model="gn1.sele4" ng-options="x for x in gn1.lista" >
-                            </select>
-                          </div>
-                    </div>
-                    <div class="col-sm-6">
-
-                         <div class="form-group">
-                            <label>Cosechadora</label>
-                            <select name="sele5" id="sele5" class="select2bs4" multiple="multiple" data-placeholder="Busca Cosechadora"
-                                    style="width: 100%;" ng-model="gn1.sele5" ng-options="x for x in gn1.listc" >
-                            </select>
-                          </div>
-
-                    </div>
-                  </div>
-
-                  <!-- input states -->
-
-                  <div class="row">
-                      <p class="mt-3 mb-1">Se envia <code>....</code></p>
-                      <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                        <label class="btn bg-warning active">
-                          <input type="radio" name="options" id="option_b1" autocomplete="off" ng-model="gn1.envy" value="today"> Hoy
-                        </label>
-                        <label class="btn bg-warning">
-                          <input type="radio" name="options" id="option_b2" autocomplete="off" ng-model="gn1.envy" value="tomorrow"> Mañana
-                        </label>
-                      </div>
-
-                  </div>
-
-
-              <div class="card-footer clearfix">
-                <a href="#" ng-click="save()" class="btn btn-sm btn-info float-left">Asignando</a>
-              </div>
 
                 </form>
               </div>
@@ -350,10 +320,12 @@
   <script src="../../plugins/angularjs/angular-route.min.js"></script>
   <script src="../../plugins/angularjs/angular-resource.min.js"></script>
 
+  <script src="../../plugins/moment/moment.js"></script>
+
   <script src="../../node_modules/bootbox/dist/bootbox.min.js"></script>
   <script src="../../node_modules/bootbox/dist/bootbox.locales.min.js"></script>
 
- <script src="../../js/asignt.js"></script>
+  <script src="../../js/burn.js"></script>
 
 <!-- Page specific script -->
 <script>
