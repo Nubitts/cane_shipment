@@ -41,7 +41,7 @@ if ($count > 0) {
   $Query = "UPDATE canes_tempo SET fletero = ?, alzadora = ?, idfleter_ = ?,
   fullnamefleter = (select fullname from forwarders where type = 'fl' and  cveforw = ?),
   fullnamelifting = (select fullname from forwarders where type = 'al' and  cveforw = ?), fullnamefleter_ = (select fullname from forwarders where type = 'co' and  cveforw = ?),
-  arrivaldate = " . $send . " WHERE ticket = ? and zafrad = zafraday()";
+  arrivaldate = " . $send . ", rdateassign = now()  WHERE ticket = ? and zafrad = zafraday()";
 
   $county = $con->executeStatement($Query, array($forwarder, $liftingm, $harverster, $forwarder, $liftingm, $harverster, $ticket));
 

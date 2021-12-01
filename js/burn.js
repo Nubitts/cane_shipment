@@ -1,3 +1,4 @@
+/* eslint-disable spaced-comment */
 /* eslint-disable unicorn/prefer-ternary */
 /* eslint-disable quotes */
 /* eslint-disable no-var */
@@ -104,7 +105,8 @@ angular.module('gn', [])
                             $Resulta = respuesta.data
 
                             bootbox.alert(`${$Resulta[0].resultado}!`, () => {
-                              cleanforms();
+                              //cleanforms();
+                              $("#formburn")[0].reset();
                             })
 
                           })
