@@ -14,7 +14,7 @@ $ticket = $header1->ticket;
 
 $Query = "";
 
-$Query = "UPDATE canes_tempo SET fletero = null, fullnamefleter = null, idlifting = null, idfleter_ = null, rdateassign = null WHERE ticket = ? and zafrad = zafraday()";
+$Query = "UPDATE canes_tempo SET fletero = null, fullnamefleter = null, idlifting = null, idfleter_ = null, rdateassign = null, arrivaldate=null WHERE ticket = ? and zafrad = zafraday()";
 
 $county = $con->executeStatement($Query, array($ticket));
 
