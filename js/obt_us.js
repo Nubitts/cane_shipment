@@ -86,12 +86,25 @@
 
         };
 
-        $scope.cleaned = function() {
+        $scope.quiteass = function(iticket) {
 
-          alert($("#quita").value);
+          console.log(iticket);
 
-              bootbox.confirm("Esta seguro de anular la asignacion al ticket " + ticket + "!", function(result){
-                  console.log('This was logged in the callback: ' + result);
+              bootbox.confirm("Esta seguro de anular la asignacion al ticket " + iticket, function(result){
+
+                if (result == true)
+                {
+
+                  $scope.hr1.ticket = iticket;
+
+                  $http.post("./quiteassign.php", angular.toJson($scope.hr1))
+                    .then(function(respuesta) {
+
+                      $scope.hr1.datas = respuesta.data;
+
+                    });
+                }
+
               });
 
         };

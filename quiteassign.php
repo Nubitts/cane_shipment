@@ -10,6 +10,14 @@ use Doctrine\DBAL\DriverManager;
 
 $db = $con;
 
+$ticket = $header1->ticket;
+
+$Query = "";
+
+$Query = "UPDATE canes_tempo SET fletero = null, fullnamefleter = null, idlifting = null, idfleter_ = null, rdateassign = null WHERE ticket = ? and zafrad = zafraday()";
+
+$county = $con->executeStatement($Query, array($ticket));
+
 $zone = substr($header1->zone, 4, 2);
 $div = substr($header1->zone, 3, 2);
 $typeu = $header1->typeu;
