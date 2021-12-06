@@ -18,10 +18,10 @@ $Query = "";
 
 switch ($typeu) {
   case "Z":
-    $Query = "select ticket, fullnamefleter, arrivaldate as fstatus,zona as zone, concat('quiteass(',ticket,')') as accion from canes_tempo where zona = " . $zone . " and isnull(fullnamefleter) = false and pesob = 0 and zafrad = zafraday()";
+    $Query = "select ticket, concat(fletero,' ',fullnamefleter) as fullnamefleter, arrivaldate as fstatus,zona as zone, concat('quiteass(',ticket,')') as accion from canes_tempo where zona = " . $zone . " and isnull(fullnamefleter) = false and pesob = 0 and zafrad = zafraday()";
     break;
   case "D":
-    $Query = "select ticket, fullnamefleter, arrivaldate as fstatus,zona as zone, concat('quiteass(',ticket,')') as accion from canes_tempo where zona in (select cvezone from div_zones where cvediv = '" . $div . "') and isnull(fullnamefleter) = false and pesob = 0 and zafrad = zafraday()";
+    $Query = "select ticket, concat(fletero,' ',fullnamefleter) as fullnamefleter, arrivaldate as fstatus,zona as zone, concat('quiteass(',ticket,')') as accion from canes_tempo where zona in (select cvezone from div_zones where cvediv = '" . $div . "') and isnull(fullnamefleter) = false and pesob = 0 and zafrad = zafraday()";
     break;
 }
 
