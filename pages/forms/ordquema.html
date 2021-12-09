@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin Tickets Campo - INCA</title>
+  <title>Ordenes Quema Campo - INCA</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -65,7 +65,7 @@
     <!-- Brand Logo -->
     <a href="../../index2.html" class="brand-link">
       <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Admin Tickets Campo</span>
+      <span class="brand-text font-weight-light">Ordenes Quema Campo</span>
     </a>
 
     <!-- Sidebar -->
@@ -94,32 +94,23 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a ng-click="load1()" class="nav-link">
+                <a ng-click="load2()" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Tickets asignados</p>
+                  <p>Listado de ordenes</p>
                 </a>
               </li>
             </ul>
           </li>
           <li class="nav-item">
-            <a href="load3()" class="nav-link">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Asignación
-                <span class="right badge badge-danger">New</span>
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
             <a ng-click="#" class="nav-link active">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Ordenes de quema
+                Captura
               </p>
             </a>
           </li>
           <li class="nav-item">
-            <a ng-click="load2()" class="nav-link">
+            <a ng-click="load1()" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Cerrar sesion
@@ -248,7 +239,7 @@
                   <div class="card-footer clearfix">
                     <a href="#" ng-click="save()" class="btn btn-sm btn-info float-left">Asignando</a>
                     <a ng-click="cleanforms()" class="btn btn-sm btn-default float-center">Limpiar</a>
-                    <a ng-click="load2()" class="btn btn-sm btn-danger float-right">Cerrar sesion</a>
+                    <a ng-click="load2()" class="btn btn-sm btn-danger float-right">Regresar</a>
                   </div>
 
                 </form>

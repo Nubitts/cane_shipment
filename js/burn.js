@@ -1,3 +1,5 @@
+/* eslint-disable prefer-template */
+/* eslint-disable space-before-blocks */
 /* eslint-disable spaced-comment */
 /* eslint-disable unicorn/prefer-ternary */
 /* eslint-disable quotes */
@@ -49,13 +51,7 @@ angular.module('gn', [])
 
         $scope.load1 = function () {
 
-          const valores = window.location.search
-
-          const sId = valores.slice(4, 84)
-
-          $scope.gn1.hash_ = sId
-
-          window.location.href = `../../index2.html?id=${$scope.gn1.hash_}`
+          window.location.href = `../../index.html`
 
         }
 
@@ -85,6 +81,10 @@ angular.module('gn', [])
 
               if (typeof ($scope.gn1.tickend) == 'undefined') {
                 baneje = 1
+              }
+
+              if ($scope.gn1.horinitial.trim().lenght == 0) {
+                  baneje = 1;
               }
 
               if (baneje == 0) {
@@ -129,7 +129,11 @@ angular.module('gn', [])
 
         $scope.load2 = function () {
 
-          window.location.href = "../../index.html";
+          const valores = window.location.search;
+
+          var sId = valores.slice(4, 84);
+
+          window.location.href = "../../indexb.html?id=" + sId;
 
         };
 

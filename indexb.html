@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin Tickets Campo - INCA</title>
+  <title>Ordenes Quema Campo - INCA</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -47,7 +47,7 @@
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Admin Tickets Campo</span>
+      <span class="brand-text font-weight-light">Ordenes Quema Campo</span>
     </a>
 
     <!-- Sidebar -->
@@ -76,17 +76,25 @@
               <li class="nav-item">
                 <a href="./index2.html" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Tickets asignados</p>
+                  <p>Ordenes</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
+<!--           <li class="nav-item">
             <a ng-click="load1()" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Asigna ticket
                 <span class="right badge badge-danger">Nuevo</span>
+              </p>
+            </a>
+          </li> -->
+          <li class="nav-item">
+            <a ng-click="load3()" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Captura
               </p>
             </a>
           </li>
@@ -114,12 +122,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Tickets</h1>
+            <h1 class="m-0">Ordenes</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Tickets</li>
+              <li class="breadcrumb-item active">Ordenes</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -163,7 +171,7 @@
             <!-- TABLE: LATEST ORDERS -->
             <div class="card">
               <div class="card-header border-transparent">
-                <h3 class="card-title">Ultimos Tickets</h3>
+                <h3 class="card-title">Ultimas Ordenes</h3>
 
               </div>
               <!-- /.card-header -->
@@ -172,21 +180,31 @@
                   <table class="table m-0">
                     <thead>
                       <tr>
-                        <th>Ticket</th>
-                        <th>Fletero</th>
-                        <th>Zona</th>
-                        <th>Status</th>
-                        <th>Accion</th>
+                        <th>Registro</th>
+                        <th>Quema</th>
+                        <th>Hora</th>
+                        <th>Orden</th>
+                        <th>Desde</th>
+                        <th>Hasta</th>
+                        <th>Tickets</th>
+                        <th>Caña</th>
+                        <th>Tipo</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr ng-repeat="x in hr1.datas">
-                        <td>{{ x.ticket }}</td>
-                        <td>{{ x.fullnamefleter }}</td>
-                        <td>{{ x.zone }}</td>
-                        <td><span class="badge badge-success">{{ x.fstatus }}</span></td>
+                        <td>{{ x.rdateburn}}</td>
+                        <td>{{ x.fecque}}</td>
+                        <td>{{ x.horque}}</td>
+                        <td>{{ x.orden}}</td>
+                        <td>{{ x.tstart}}</td>
+                        <td>{{ x.tend}}</td>
+                        <td>{{ x.tickets}}</td>
+                        <td>{{ x.tpocan}}</td>
+                        <td>{{ x.typeburn}}</td>
+                       <!--  <td><span class="badge badge-success">{{ x.fstatus }}</span></td> -->
                         <td>
-                          <div class="sparkbar" data-color="#00a65a" data-height="20"><a ng-click="quiteass(x.ticket)" class="btn btn-danger"><i class="fas fa-trash"></i></a></div>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20"><a ng-click="quiteass(x.tstart, x.tend)" class="btn btn-danger"><i class="fas fa-trash"></i></a></div>
                         </td>
                       </tr>
 <!--                     <tr>
@@ -229,7 +247,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
-                <a ng-click="load1()" class="btn btn-sm btn-info float-left">Nueva asignacion</a>
+                <a ng-click="load1()" class="btn btn-sm btn-info float-left">Nueva captura</a>
                 <a ng-click="load2()" class="btn btn-sm btn-danger float-right">Cerrar sesion</a>
               </div>
               <!-- /.card-footer -->
@@ -299,7 +317,7 @@
   <script src="node_modules/bootbox/dist/bootbox.min.js"></script>
   <script src="node_modules/bootbox/dist/bootbox.locales.min.js"></script>
 
-  <script src="js/obt_us.js"></script>
+  <script src="js/obt_burn.js"></script>
 
 
 </body>
