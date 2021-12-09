@@ -17,7 +17,7 @@ $typeu = $header1->typeu;
 $Query = "";
 
 
-$Query = "select rdateburn,fecque,horque,orden, tstart, tend, tickets, tpocan, typeburn from vburnorders";
+$Query = "select rdateburn,fecque,horque,orden, tstart, tend, tickets, tpocan, typeburn from vburnorders order by rdateburn desc, fecque asc, horque desc";
 
 $statement = $db->prepare($Query);
 $resultSet = $statement->execute();

@@ -11,13 +11,13 @@ use Doctrine\DBAL\DriverManager;
 $db = $con;
 
 $tstart = $header1->tstart;
-$end = $header1->tend;
+$tend = $header1->tend;
 
 $Query = "";
 
 $Query = "UPDATE canes_tempo SET tpocan = null, typeburn = null, fecque = null, horque = null, rdateburn = null WHERE (ticket BETWEEN ? and ?) and zafrad = zafraday()";
 
-$county = $con->executeStatement($Query, array($tstart,$tend));
+$county = $con->executeStatement($Query, array($tstart, $tend));
 
 $zone = substr($header1->zone, 4, 2);
 $div = substr($header1->zone, 3, 2);
@@ -25,7 +25,7 @@ $typeu = $header1->typeu;
 
 $Query = "";
 
-$Query = "select rdateburn,fecque,horque,orden, tstart, tend, tickets, tpocan, typeburn from vburnorders";
+$Query = "select rdateburn,fecque,horque,orden, tstart, tend, tickets, tpocan, typeburn from vburnorders order by rdateburn desc, fecque asc, horque desc";
 
 $statement = $db->prepare($Query);
 $resultSet = $statement->execute();
