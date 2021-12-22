@@ -43,7 +43,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a ng-click="load1()" class="nav-link">Home</a>
+        <a ng-click="load2()" class="nav-link">Home</a>
       </li>
 
     </ul>
@@ -102,7 +102,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a ng-click="#" class="nav-link">
+            <a ng-click="#" class="nav-link active">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Programar Ordenes Asig.
@@ -110,7 +110,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a ng-click="#" class="nav-link active">
+            <a ng-click="load3()" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Captura O. quema
@@ -141,12 +141,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Ordenes de Quema</h1>
+            <h1>Programar Ordenes para asignacion</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Ordenes de quema</li>
+              <li class="breadcrumb-item active">Programar Ordenes Asig.</li>
             </ol>
           </div>
         </div>
@@ -171,81 +171,35 @@
             <!-- general form elements disabled -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Concretar Fecha de Quema</h3>
+                <h3 class="card-title">Habilite Ordenes para Asignacion</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <form id="formburn">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <label>Fecha:</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                        </div>
-                        <input type="text" ng-model="gn1.datinitial" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy/mm/dd" data-mask>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <label>Hora:</label>
-                      <div class="input-group">
-                        <div class="input-group-prepend">
-                          <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
-                        </div>
-                        <input type="text" ng-model="gn1.horinitial" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="HH:MM" data-mask>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div class="row">
-                    <div class="col-sm-4">
-                      <!-- Select multiple-->
-                      <div id="context" class="form-group">
-                        <label>Orden</label>
-                        <input type="text" ng-model="gn1.order" rows="2" class="form-control" id="dato_ticket" name="dato_ticket" placeholder="Anote orden" class="form-control">
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div id="context" class="form-group">
-                        <label>Desde ticket</label>
-                        <input type="text" ng-model="gn1.tickinitial" rows="2" class="form-control" id="dato_ticket" name="dato_ticket" placeholder="Anote ticket inicial" class="form-control">
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div id="context" class="form-group">
-                        <label>Hasta ticket</label>
-                        <input type="text" ng-model="gn1.tickend" rows="2" class="form-control" id="dato_ticket" name="dato_ticket" placeholder="Anote ticket final" class="form-control">
-                      </div>
-                    </div>
-                  </div>
+                <form id="formord">
 
                   <div class="row">
                     <div class="col-sm-6">
                       <!-- select -->
                       <div class="form-group">
-                        <label>Tipo de caña</label>
-                        <select class="form-control"  ng-model="gn1.typecanes">
-                          <option>Cruda</option>
-                          <option>Quemada</option>
+                        <label>Zona</label>
+                        <select class="form-control"  ng-model="gn1.idzone" ng-options="x for x in gn1.datazones"  ng-change="ordrld()">
                         </select>
                       </div>
                     </div>
-                    <div class="col-sm-6">
-                      <!-- select -->
-                      <div class="form-group">
-                        <label>Tipo de quema</label>
-                        <select class="form-control"  ng-model="gn1.typeburns">
-                          <option>Programada</option>
-                          <option>Accidentada</option>
-                          <option>Normal</option>
+                  </div>
+
+                 <div class="row">
+                    <div class="col-md-12">
+                      <div id="list2" class="form-group">
+                        <label>Elije Orden</label>
+                        <select name="ordl" id="ordl" class="select2bs4" multiple="multiple" style="width: 100%;" ng-model="gn1.ordl" ng-options="x for x in gn1.listo" >
                         </select>
                       </div>
                     </div>
                   </div>
 
                   <div class="card-footer clearfix">
-                    <a href="#" ng-click="save()" class="btn btn-sm btn-info float-left">Asignando</a>
+                    <a href="#" ng-click="save()" class="btn btn-sm btn-info float-left">Habilitando</a>
                     <a ng-click="cleanforms()" class="btn btn-sm btn-default float-center">Limpiar</a>
                     <a ng-click="load2()" class="btn btn-sm btn-danger float-right">Regresar</a>
                   </div>
@@ -314,6 +268,11 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+
 
   <script src="../../plugins/angularjs/angular.min.js"></script>
   <script src="../../plugins/angularjs/angular-route.min.js"></script>
@@ -324,7 +283,7 @@
   <script src="../../node_modules/bootbox/dist/bootbox.min.js"></script>
   <script src="../../node_modules/bootbox/dist/bootbox.locales.min.js"></script>
 
-  <script src="../../js/burn.js"></script>
+  <script src="../../js/assignord.js"></script>
 
 <!-- Page specific script -->
 <script>

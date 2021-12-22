@@ -86,13 +86,25 @@
 
         };
 
+        $scope.load4 = function() {
+
+          const valores = window.location.search;
+
+          var sId = valores.substr(4,80);
+
+          $scope.hr1.hash_ = sId;
+
+          window.location.href = "./pages/forms/progassignord.html?id=" + $scope.hr1.hash_;
+
+        };
+
         $scope.quiteass = function(iDesde, iHasta) {
 
           console.log(iDesde);
 
           console.log(iHasta);
 
-              bootbox.confirm("Esta seguro de anular la orden de quema " + iticket, function(result){
+              bootbox.confirm("Esta seguro de anular del ticket " + iDesde + " al " + iHasta, function(result){
 
                 if (result == true)
                 {
