@@ -139,7 +139,7 @@
         <!-- Main row -->
         <div class="row">
           <!-- Left col -->
-          <div class="col-md-8">
+          <div class="col-md-16">
             <!-- MAP & BOX PANE -->
 
             <!-- /.card -->
@@ -172,19 +172,25 @@
                   <table class="table m-0">
                     <thead>
                       <tr>
-                        <th>Ticket</th>
-                        <th>Fletero</th>
-                        <th>Zona</th>
-                        <th>Status</th>
-                        <th>Accion</th>
+                        <th style="font-size:13px">Ticket</th>
+                        <th style="font-size:13px">Fletero</th>
+                        <th style="font-size:13px">Zona</th>
+                        <th style="font-size:13px">Entrega</th>
+                        <th style="font-size:13px">Quema</th>
+                        <th style="font-size:13px">Hrs Q</th>
+                        <th style="font-size:13px">Hrs Atr</th>
+                        <th style="font-size:13px">Accion</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr ng-repeat="x in hr1.datas">
-                        <td>{{ x.ticket }}</td>
-                        <td>{{ x.fullnamefleter }}</td>
+                        <td style="font-size:13px">{{ x.ticket }}</td>
+                        <td style="font-size:13px">{{ x.fullnamefleter }}</td>
                         <td>{{ x.zone }}</td>
                         <td><span class="badge badge-success">{{ x.fstatus }}</span></td>
+                        <td style="font-size:13px">{{ x.oquema }}</td>
+                        <td style="font-size:13px">{{ x.ohrs }}</td>
+                        <td style="font-size:13px">{{ x.ahrs }}</td>
                         <td>
                           <div class="sparkbar" data-color="#00a65a" data-height="20"><a ng-click="quiteass(x.ticket)" class="btn btn-danger"><i class="fas fa-trash"></i></a></div>
                         </td>

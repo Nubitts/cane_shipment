@@ -8,12 +8,16 @@ require './vendor/autoload.php';
 
 use Doctrine\DBAL\DriverManager;
 
+date_default_timezone_set("America/Mexico_City");
+
 $db = $con;
 
 $zone = $header1->idzone;
 $listor = $header1->listord;
 
 $Query = "";
+
+$fecha = new DateTime('NOW');
 
 
 $Query = "UPDATE canes_tempo set hability = 1 where zona = ? and orden in (?)";

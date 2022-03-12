@@ -12,7 +12,7 @@ $db = $con;
 
 $typef = $header1->typef;
 
-$Query = "select concat(cveforw,' ',fullname) as descripcion from forwarders where fullname <> 'x' and type = '" . $typef . "' and idzone > 0 and zafra = zafraday()";
+$Query = "select descripcion from vforwasgv where type = '" . $typef . "'";
 
 $statement = $db->prepare($Query);
 $resultSet = $statement->execute();

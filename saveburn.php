@@ -39,7 +39,7 @@ if ($count > 0) {
       break;
   }
 
-  $Query = "UPDATE canes_tempo SET fecque = ?, horque = ?, tpocan = ?, typeburn = ?, rdateburn = curdate() WHERE orden = ? and (ticket BETWEEN ? and ?) and zafrad = zafraday()";
+  $Query = "UPDATE canes_tempo SET fecque = ?, horque = ?, tpocan = ?, typeburn = ?, rdateburn = now() WHERE orden = ? and (ticket BETWEEN ? and ?) and zafrad = zafraday()";
 
   $county = $con->executeStatement($Query, array($datinitial, $horinitial, $typecane, $typeburn, $order, $tickinitial, $tickend));
 

@@ -147,7 +147,7 @@
         <!-- Main row -->
         <div class="row">
           <!-- Left col -->
-          <div class="col-md-8">
+          <div class="col-md-16">
             <!-- MAP & BOX PANE -->
 
             <!-- /.card -->
@@ -181,9 +181,11 @@
                     <thead>
                       <tr>
                         <th>Registro</th>
+                        <th>Zona</th>
                         <th>Quema</th>
                         <th>Hora</th>
                         <th>Orden</th>
+                        <th>Hrs. Trans.</th>
                         <th>Desde</th>
                         <th>Hasta</th>
                         <th>Tickets</th>
@@ -194,9 +196,11 @@
                     <tbody>
                       <tr ng-repeat="x in hr1.datas">
                         <td>{{ x.rdateburn}}</td>
+                        <td>{{ x.zona}}</td>
                         <td>{{ x.fecque}}</td>
                         <td>{{ x.horque}}</td>
                         <td>{{ x.orden}}</td>
+                        <td>{{ x.hrs_}}</td>
                         <td>{{ x.tstart}}</td>
                         <td>{{ x.tend}}</td>
                         <td>{{ x.tickets}}</td>

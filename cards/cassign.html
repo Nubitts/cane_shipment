@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Ticket Asignado - INCA </title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css'>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body ng-app="gn" ng-controller="gnController as gn1" data-ng-init="init()">
+  <!-- partial:index.partial.html -->
+  <div id="capture" style="padding: 10px;"  class="courses-container">
+    <div class="course">
+      <div class="course-preview">
+        <h6>Ingenio El Carmen zafra</h6><h6>{{gn1.zafra}}</h6>
+        <h2>Ticket </h2><h2>{{gn1.ticket}}</h2>
+      </div>
+      <div class="course-info">
+        <h6>Descripcion</h6>
+        <h2>Fletero </h2><h2>{{gn1.fletero}}</h2>
+        <h3>Productor </h3><h3>{{gn1.productor}}</h3>
+        <h3>Alzadora </h3><h3>{{gn1.alzadora}}</h3>
+        <h3>{{gn1.detalle}}</h3>
+        <h2>Probable entrega </h2><h2>{{gn1.entrega}}</h2>
+      </div>
+    </div>
+  </div>
+  <button ng-click="convert()" class="btn">Guardar</button>
+
+  <script src="../plugins/angularjs/angular.min.js"></script>
+  <script src="../plugins/angularjs/angular-route.min.js"></script>
+  <script src="../plugins/angularjs/angular-resource.min.js"></script>
+
+  <script src="html2canvas.js"></script>
+
+<!-- partial -->
+  <script  src="script.js"></script>
+
+</body>
+</html>

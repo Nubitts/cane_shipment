@@ -10,14 +10,14 @@ use Doctrine\DBAL\DriverManager;
 
 $db = $con;
 
-$zone = substr($header1->zone, 4, 2);
+/* $zone = substr($header1->zone, 4, 2);
 $div = substr($header1->zone, 3, 2);
 $typeu = $header1->typeu;
-
+ */
 $Query = "";
 
 
-$Query = "select rdateburn,zona,fecque,horque,orden, tstart, tend, tickets, tpocan, typeburn,hrs_ from vburnorders order by rdateburn desc, fecque asc, horque desc";
+$Query = "select zafrad, ticket,ifnull(concat(fletero,' ',fullnamefleter),' Sin Asignar ') as fletero, concat(clave,' ',nombre) as productor,concat(alzadora,' ',fullnamelifting) as alzadora,concat('Orden ',orden,' Zona ',zona,' Tabla ',tabla) as detalle,DATE_FORMAT(arrivaldate,'%d-%m-%y') as arrivaldate from ticket_assign";
 
 $statement = $db->prepare($Query);
 $resultSet = $statement->execute();
