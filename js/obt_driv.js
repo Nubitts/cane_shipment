@@ -41,7 +41,7 @@
                 $scope.hr1.typeu = $datos[0]['tu'];
                 $scope.hr1.id = $datos[0]['id'];
 
-                $http.post("./table.php", angular.toJson($scope.hr1))
+                $http.post("./tablec.php", angular.toJson($scope.hr1))
                   .then(function(respuesta) {
 
                     $scope.hr1.datas = respuesta.data;
@@ -85,19 +85,6 @@
           window.location.href = "./pages/forms/ordquema.html?id=" + $scope.hr1.hash_;
 
         };
-
-        $scope.load4 = function() {
-
-          const valores = window.location.search;
-
-          var sId = valores.substr(4,80);
-
-          $scope.hr1.hash_ = sId;
-
-          window.location.href = "indexd.html?id=" + $scope.hr1.hash_;
-
-        };
-
 
         $scope.quiteass = function(iticket) {
 

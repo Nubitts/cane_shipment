@@ -430,6 +430,18 @@ angular.module('gn', [])
 
         };
 
+        $scope.load4 = function() {
+
+          const valores = window.location.search;
+
+          var sId = valores.substr(4,80);
+
+          $scope.gn1.hash_ = sId;
+
+          window.location.href = "../../indexd.html?id=" + $scope.gn1.hash_;
+
+        };
+
       }])
 
 function is_numeric(value) {

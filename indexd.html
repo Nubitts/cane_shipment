@@ -74,7 +74,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index2.html" class="nav-link active">
+                <a href="./index2.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tickets asignados</p>
                 </a>
@@ -91,7 +91,7 @@
           </li>
 
           <li class="nav-item">
-            <a ng-click="load4()" class="nav-link">
+            <a ng-click="#" class="nav-link active">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Fleteros ocupados
@@ -182,62 +182,24 @@
                   <table class="table m-0">
                     <thead>
                       <tr>
-                        <th style="font-size:13px">Ticket</th>
+                        <th style="font-size:13px">Id</th>
                         <th style="font-size:13px">Fletero</th>
+                        <th style="font-size:13px">Ticket</th>
                         <th style="font-size:13px">Zona</th>
-                        <th style="font-size:13px">Entrega</th>
-                        <th style="font-size:13px">Quema</th>
-                        <th style="font-size:13px">Hrs Q</th>
-                        <th style="font-size:13px">Hrs Atr</th>
-                        <th style="font-size:13px">Accion</th>
+                        <th style="font-size:13px">Estado</th>
+                        <th style="font-size:13px">Fecha</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr ng-repeat="x in hr1.datas">
-                        <td style="font-size:13px">{{ x.ticket }}</td>
-                        <td style="font-size:13px">{{ x.fullnamefleter }}</td>
-                        <td>{{ x.zone }}</td>
-                        <td><span class="badge badge-success">{{ x.fstatus }}</span></td>
-                        <td style="font-size:13px">{{ x.oquema }}</td>
-                        <td style="font-size:13px">{{ x.ohrs }}</td>
-                        <td style="font-size:13px">{{ x.ahrs }}</td>
-                        <td>
-                          <div class="sparkbar" data-color="#00a65a" data-height="20"><a ng-click="quiteass(x.ticket)" class="btn btn-danger"><i class="fas fa-trash"></i></a></div>
-                        </td>
+                        <td style="font-size:13px">{{ x.id }}</td>
+                        <td style="font-size:13px">{{ x.fletero }}</td>
+                        <td>{{ x.ticket }}</td>
+                        <td><span class="badge badge-success">{{ x.zona }}</span></td>
+                        <td style="font-size:13px">{{ x.estado }}</td>
+                        <td style="font-size:13px">{{ x.fecha }}</td>
                       </tr>
-<!--                     <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>Call of Duty IV</td>
-                      <td><span class="badge badge-success">Sig. dia</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20"><a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a></div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                      <td>Samsung Smart TV</td>
-                      <td><span class="badge badge-warning">Hoy</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#f39c12" data-height="20"><a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a></div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                      <td>iPhone 6 Plus</td>
-                      <td><span class="badge badge-danger">Atrasado</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#f56954" data-height="20"><a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a></div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>Call of Duty IV</td>
-                      <td><span class="badge badge-success">Sig. dia</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20"><a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a></div>
-                      </td>
 
-                    </tr> -->
                     </tbody>
                   </table>
                 </div>
@@ -245,8 +207,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
-                <a ng-click="load1()" class="btn btn-sm btn-info float-left">Nueva asignacion</a>
-                <a ng-click="load2()" class="btn btn-sm btn-danger float-right">Cerrar sesion</a>
+                <a ng-click="#" class="btn btn-sm btn-info float-left">Fleteros en Asignacion o en Batey</a>
               </div>
               <!-- /.card-footer -->
             </div>
@@ -315,7 +276,7 @@
   <script src="node_modules/bootbox/dist/bootbox.min.js"></script>
   <script src="node_modules/bootbox/dist/bootbox.locales.min.js"></script>
 
-  <script src="js/obt_us.js"></script>
+  <script src="js/obt_driv.js"></script>
 
 
 </body>
