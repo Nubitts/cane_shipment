@@ -389,6 +389,8 @@ angular.module('gn', [])
 
                               $scope.gn1.hash_ = sId
 
+                              tickimg($Resulta[0].ticket);
+
                               window.location.href = `../../index2.html?id=${$scope.gn1.hash_}`
 
                             })
@@ -442,7 +444,53 @@ angular.module('gn', [])
 
         };
 
+        $scope.tickimg = function(iticket) {
+
+                  $scope.hr1.ticket = iticket;
+
+                  $http.post("../../datatickd.php", angular.toJson($scope.hr1))
+                    .then(function(respuestt) {
+
+                      $scope.hr1.zafra = respuestt.data[0].zafrad;
+                      $scope.hr1.productor = respuestt.data[0].productor;
+                      $scope.hr1.fletero = respuestt.data[0].fletero;
+                      $scope.hr1.arrivo = respuestt.data[0].arrivaldate;
+                      $scope.hr1.detalle = respuestt.data[0].detalle;
+                      $scope.hr1.alzadora = respuestt.data[0].alzadora;
+
+                      $("#myModal").modal('show');
+
+                    });
+
+        };
+
+// eslint-disable-next-line no-multiple-empty-lines
+
       }])
+
+const $boton = document.querySelector("#boton")
+
+$boton.addEventListener("click", () => {
+
+  $objetivo = document.querySelector("#canvas")
+  $flet1 = $("#forwarder").text()
+  $flet2 = $flet1.substr(0, $flet1.indexOf(' '))
+
+  $tick1 = $("#ticket").text()
+
+  html2canvas($objetivo,{ backgroundColor: "#58aae8" }) // Llamar a html2canvas y pasarle el elemento
+    .then(canvas => {
+      // Cuando se resuelva la promesa traerá el canvas
+      // Crear un elemento <a>
+      const enlace = document.createElement('a');
+      enlace.download = "ticket-" + $tick1 + "-fletero-" + $flet2 + ".png";
+      // Convertir la imagen a Base64
+      enlace.href = canvas.toDataURL();
+      // Hacer click en él
+      enlace.click();
+    });
+});
+
 
 function is_numeric(value) {
   return !isNaN(parseFloat(value)) && isFinite(value)

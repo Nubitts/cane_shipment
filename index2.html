@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed" ng-app="hr" ng-controller="hrController as hr1" data-ng-init="init()" >
 
@@ -190,6 +191,7 @@
                         <th style="font-size:13px">Hrs Q</th>
                         <th style="font-size:13px">Hrs Atr</th>
                         <th style="font-size:13px">Accion</th>
+                        <th style="font-size:13px">Ticket</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -203,6 +205,9 @@
                         <td style="font-size:13px">{{ x.ahrs }}</td>
                         <td>
                           <div class="sparkbar" data-color="#00a65a" data-height="20"><a ng-click="quiteass(x.ticket)" class="btn btn-danger"><i class="fas fa-trash"></i></a></div>
+                        </td>
+                        <td>
+                          <div class="sparkbar" data-color="#00a65a" data-height="20"><a ng-click="tickimg(x.ticket)" class="btn btn-primary"><i class="fas fa-ticket-alt"></i></a></div>
                         </td>
                       </tr>
 <!--                     <tr>
@@ -281,6 +286,42 @@
       <b>Version</b> 1.0.0
     </div>
   </footer>
+
+
+                        <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                          <div role="document" class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Ticket emitido {{hr1.ticket}}</strong>
+                                <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                              </div>
+                              <div class="modal-body">
+                                <p>Datos del ticket</p>
+                                <form class="form-inline">
+                                  <div id = "canvas">
+                                      <p style="text-align:center">INGENIO EL CARMEN SA DE CV Zafra {{hr1.zafra}}</p>
+                                      <p></p>
+                                      <p>Ticket <div id ="ticket">{{hr1.ticket}}</div></p>
+                                      <p></p>
+                                      <p> Productor {{hr1.productor}}</p>
+                                      <p><div>Fletero <div id = "forwarder">{{hr1.fletero}}</div> arrivo {{hr1.arrivo}}</p>
+                                      <p></p>
+                                      <p>{{hr1.detalle}}</p>
+                                      <p></p>
+                                      <p>Alzadora {{hr1.alzadora}}</p>
+
+                                  </div>
+                                </form>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" data-dismiss="modal" class="btn btn-se(condary">Cerrar</button>
+                                <button type="button" data-dismiss="modal" id="boton" class="btn btn-primary">Guardar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+
 </div>
 <!-- ./wrapper -->
 
@@ -314,6 +355,9 @@
 
   <script src="node_modules/bootbox/dist/bootbox.min.js"></script>
   <script src="node_modules/bootbox/dist/bootbox.locales.min.js"></script>
+
+  <script src="plugins/html2canvas/html2canvas.min.js"></script>
+
 
   <script src="js/obt_us.js"></script>
 
