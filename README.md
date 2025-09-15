@@ -1,3 +1,33 @@
+# cane_shipment
+
+Sistema para emisión de tickets de embarque de caña de azúcar para unidades transportistas. Permite el registro, seguimiento y recepción de embarques a escala industrial mediante una interfaz administrativa basada en AdminLTE.
+
+## Características principales
+
+- Emisión de tickets de embarque para unidades de transporte (freight forwarder units).  
+- Gestión de órdenes (crear, listar, actualizar, asignar).  
+- Recepción en planta industrial.  
+- Interfaz con plantilla AdminLTE.  
+- Sistemas de frontend (HTML, CSS, JS) y backend (PHP).  
+- Manejo de dependencias con Composer y npm / package.json.
+
+## Tecnologías
+
+| Componente | Tecnología / Herramienta |
+|------------|----------------------------|
+| Backend    | PHP                      |
+| Frontend   | HTML, CSS, JavaScript     |
+| Plantilla UI | AdminLTE                |
+| Gestión de dependencias backend | Composer |
+| Gestión de dependencias frontend | npm / Node.js |
+| Control de versiones | Git / GitHub        |
+| Licencia   | MIT                      |
+
+## Estructura del proyecto
+
+
+
+
 AdminLte template using in this project
 
 
